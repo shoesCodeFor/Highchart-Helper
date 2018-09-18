@@ -1,0 +1,3 @@
+module HIGHCHARTS_SPEC_HELPER
+  
+end
