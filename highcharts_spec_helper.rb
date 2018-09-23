@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 
 module HIGHCHARTS_SPEC_HELPER
-  def point_of_reference
+  def place_point
 
   end
   def highlight_line
@@ -10,4 +10,14 @@ module HIGHCHARTS_SPEC_HELPER
   def click_point
 
   end
+  def get_legend
+
+  end
+  def get_histographs
+    
+  end
+  def get_tooltip
+
+  end
+
 end
