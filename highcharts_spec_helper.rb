@@ -1,13 +1,18 @@
 #!/usr/bin/ruby
 require 'selenium'
-options = Selenium::WebDriver::Chrome::Options.new
-options.add_argument('--ignore-certificate-errors')
-options.add_argument('--disable-popup-blocking')
-options.add_argument('--disable-translate')
-driver = Selenium::WebDriver.for :chrome, options: options
+
 
 
 module HIGHCHARTS_SPEC_HELPER
+  # This is probably not needed, but it will help me test efficacy of the methods.
+  def init_webdriver
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_argument('--ignore-certificate-errors')
+    options.add_argument('--disable-popup-blocking')
+    options.add_argument('--disable-translate')
+    driver = Selenium::WebDriver.for :chrome, options: options
+  end
+  
   def place_point
     js = "// Some JS to place the point"
     driver.execute_script(js)
