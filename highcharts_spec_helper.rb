@@ -4,7 +4,7 @@ require 'selenium'
 
 
 module HIGHCHARTS_SPEC_HELPER
-  # This is probably not needed, but it will help me test efficacy of the methods.
+  # Using WebDriver is optional, but this helper only works with Selenium
   def init_webdriver
     options = Selenium::WebDriver::Chrome::Options.new
     options.add_argument('--ignore-certificate-errors')
@@ -13,9 +13,9 @@ module HIGHCHARTS_SPEC_HELPER
     driver = Selenium::WebDriver.for :chrome, options: options
   end
   
-  def place_point
-    js = "// Some JS to place the point"
-    driver.execute_script(js)
+  def place_point(line_number, parent_div)
+    get_line = "document.getElementById('highchart-series-#{line_number}');"
+    driver.execute_script(get_line)
   end
   def highlight_line
     js = "// Some JS to place the point"
