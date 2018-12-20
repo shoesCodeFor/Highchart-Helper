@@ -14,7 +14,11 @@ module HIGHCHARTS_SPEC_HELPER
   end
   
   def place_point(line_number, parent_div)
-    get_line = "document.getElementById('highchart-series-#{line_number}');"
+    # All execute script method calls are a self-invoking function
+    get_line = "
+      line = document.getElementById('highchart-series-#{line_number}');
+      return line;
+    "
     driver.execute_script(get_line)
   end
   def highlight_line
@@ -40,5 +44,8 @@ module HIGHCHARTS_SPEC_HELPER
   end
   def get_tooltip
     # TODO - method to get qtips
+  end
+  def compare_charts
+    # TODO - method to get chart lines
   end
 end
