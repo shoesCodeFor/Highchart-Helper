@@ -36,6 +36,17 @@ module HIGHCHARTS_SPEC_HELPER
       driver.find_elements(:xpath, "//*[@class='legends_class']")
     end
   end
+  
+  ##############################################################################################
+  # Gets all data points associated to a specific legend and graph
+  # @param root_xpath [String] is the parent container to the graph(Optional)
+  # @param legend_number [String] is the 'highchart-color' value that corresponds to the legend
+  # @return [Array] of Selenium WebElements that match the class and container.
+  def get_legends_data_points(root_xpath = "", legend_number)
+    array_of_points = $driver.find_elements(:xpath, "#{root_xpath}//*[contains(@class, 'highcharts-point') and contains(@class ,'highcharts-color-#{legend_number}')]")
+    return array_of_points
+  end
+  
   def get_highchart
     # TODO - method for getting a highcharts data
   end
