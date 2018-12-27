@@ -5,4 +5,5 @@ It is the hope of this module to be a drop-in for Rspec.  Unfortunately, Seleniu
 
 This is a collection of common methods to find chart elements by injecting Javascript into pages and manipulating Highcharts to allow them to be tested with automation.
 
-I need some tests.
+To use this with an existing Selenium WebDriver instance you will need to match the variable naming convention in your project.
+Example: if you are using the global variable `$driver` to access WebDriver use a search and replace to modify the module to use `$driver` rather than `driver`.
