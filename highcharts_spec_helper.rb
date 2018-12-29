@@ -1,10 +1,8 @@
 #!/usr/bin/ruby
 require 'selenium'
 
-
-
 module HIGHCHARTS_SPEC_HELPER
-  # Using WebDriver is optional, but this helper only works with Selenium
+  # Using the init_webdriver method is optional, but this helper only works with Selenium
   def init_webdriver
     options = Selenium::WebDriver::Chrome::Options.new
     options.add_argument('--ignore-certificate-errors')
@@ -45,6 +43,16 @@ module HIGHCHARTS_SPEC_HELPER
   def get_legends_data_points(root_xpath = "", legend_number)
     array_of_points = driver.find_elements(:xpath, "#{root_xpath}//*[contains(@class, 'highcharts-point') and contains(@class ,'highcharts-color-#{legend_number}')]")
     return array_of_points
+  end
+  
+  def get_legend_names(parent_xpath)
+    labels_array = []
+    legends_array = get_all_legends(parent_xpath)
+    legends_array.each do |legend|
+      label = legend.find_element(:xpath, "//span[@class='legend-text']")
+      labels_array.push(label.text)
+    end
+    return labels_array
   end
   
   def get_highchart
